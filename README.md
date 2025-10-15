@@ -131,7 +131,7 @@ ESTAB  0  0  192.168.20.10:34944  192.168.20.11:4444  users:((“sh”,pid=8931,
 link
 
 ### 4. Telemetry
-a
+
 1. Configure Splunk to ingest sysmon entries
 
 - On the Ubuntu machine running Splunk , navigate to $SPLUNK_HOME/etc/apps/search/local/ or the inputs.conf location. If there's no inputs.conf present, copy from the default app folder and add:
