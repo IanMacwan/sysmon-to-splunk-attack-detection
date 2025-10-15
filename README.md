@@ -1,3 +1,5 @@
+# 💻 Sysmon-to-Splunk: Reverse Shell Attack Detection
+
 ## 🔍 Overview
 
 This lab simulates a **realistic endpoint compromise** in a controlled environment.  
@@ -10,8 +12,8 @@ The project bridges **red-team tactics** and **blue-team analysis**, showing how
 1. Install VirtualBox on your host OS.  
 
 2. Create the VMs:
-   - **Ubuntu target** — install from [ISO][https://ubuntu.com/download/desktop].
-   - **Kali attacker** — import the [Kali][https://www.kali.org/get-kali/#kali-platforms] VirtualBox image (or install from ISO).
+   - **Ubuntu target** — install from [ISO](https://ubuntu.com/download/desktop).
+   - **Kali attacker** — import the [Kali](https://www.kali.org/get-kali/#kali-platforms) VirtualBox image (or install from ISO).
    - **Ensure** that both VMs are in a internal network.
 
 2. Allocate resources:
@@ -22,3 +24,4 @@ The project bridges **red-team tactics** and **blue-team analysis**, showing how
 | Network Diagram                       |
 | ------------------------------------- |
 | ![diagram](./docs/diagram.png)        |  
+
