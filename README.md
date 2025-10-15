@@ -1,8 +1,8 @@
 # 💻 Sysmon-to-Splunk: Reverse Shell Attack Detection
 
-> **Stack:** VirtualBox, Kali Linux (attacker), Ubuntu (target), Sysmon-for-Linux, Splunk  
-> **Focus:** Endpoint Telemetry - SIEM Integration - Threat Detection
-> **Goal:** Build and analyze a real attack scenario using Sysmon for Linux and Splunk SIEM
+**Stack:** VirtualBox, Kali Linux (attacker), Ubuntu (target), Sysmon-for-Linux, Splunk  
+**Focus:** Endpoint Telemetry - SIEM Integration - Threat Detection
+**Goal:** Build and analyze a real attack scenario using Sysmon for Linux and Splunk SIEM
 
 ## 🔍 Overview
 
