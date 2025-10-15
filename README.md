@@ -128,3 +128,55 @@ getent group
 ESTAB  0  0  192.168.20.10:34944  192.168.20.11:4444  users:((“sh”,pid=8931,fd=4),(“homework.pdf.el”,pid=8370,fd=4))
 ```
 - *note that the peer address (2nd ip) is the attacker machines ip with the port of the handler.*
+link
+
+### 4. Telemetry
+a
+1. Configure Splunk to ingest sysmon entries
+
+- On the Ubuntu machine running Splunk , navigate to $SPLUNK_HOME/etc/apps/search/local/ or the inputs.conf location. If there's no inputs.conf present, copy from the default app folder and add:
+```
+[monitor:///var/log/syslog]
+disabled = 0
+index = endpoint
+sourcetype = sysmon:linux
+```
+
+- Save the file and restart:
+```
+sudo /opt/splunk/bin/splunk restart
+```
+
+- In Splunk web: Settings → Indexes → Add new index: endpoint (or the name you used).
+
+- Confirm data ingestion by searching the new index: index=endpoint in the Search & Reporting app, the resuilt shoud look like:
+[result](./docs/search1.png)
+
+
+2. Example Splunk queries
+
+- All events in the endpoint index:
+```
+index=endpoint
+```
+
+- Search for attacker IP
+```
+index=endpoint "192.168.20.11"
+```
+
+
+## 💡 Future Improvements
+
+> 🔧 **Work in Progress** — This is an work in progress lab, and I plan to improve it in the future.
+
+- Add Splunk dashboards or alerts for Sysmon events.
+
+- Test Windows Sysmon vs. Linux Sysmon telemetry differences.
+
+- Add MITRE ATT&CK mapping for detected behaviors.
+
+
+## 🏁 Final Thoughts
+
+This lab bridges offensive and defensive cybersecurity skills, and allowed me to see how a SIEM can be used to detect, analyze, and investigate real-world attack activity in a safe environment.
