@@ -168,7 +168,7 @@ index=endpoint "192.168.20.11"
 
 ## 💡 Future Improvements
 
-> 🔧 **Work in Progress** — This is an work in progress lab, and I plan to improve it in the future.
+> 🔧 **Work in Progress** — This is a work in progress lab, and I plan to improve it in the future.
 
 - Add Splunk dashboards or alerts for Sysmon events.
 
